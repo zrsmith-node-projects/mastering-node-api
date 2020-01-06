@@ -1,0 +1,25 @@
+{
+  "name": "MasterREST",
+  "version": "1.0.0",
+  "description": "[Github](https://github.com/fullstacktraining/Mastering-REST-APIs-in-Node.js-Zero-To-Hero)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon section-2/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zrsmith-node-projects/mastering-node-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zrsmith-node-projects/mastering-node-api/issues"
+  },
+  "homepage": "https://github.com/zrsmith-node-projects/mastering-node-api#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
