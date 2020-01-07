@@ -8,6 +8,21 @@ function listAllEmployees(req, res) {
   res.end(JSON.stringify(data));
 }
 
+function addEmployee(req, res) {
+  let body = "";
+
+  req.on("data", chunk => (body += chunk.toString()));
+  req.on("end", () => {
+    data.push(JSON.parse(body));
+    req.statusCode = 201;
+    return res.end(`${JSON.parse(body).name} added`);
+  });
+  req.on("error", error => {
+    res.statusCode = 400;
+    return res.end(error);
+  });
+}
+
 const server = http.createServer((req, res) => {
   const urlParts = url.parse(req.url);
   if (urlParts.pathname === "/api/employees") {
@@ -15,12 +30,17 @@ const server = http.createServer((req, res) => {
       case "GET":
         listAllEmployees(req, res);
         break;
+      case "POST":
+        addEmployee(req, res);
+        break;
       default:
         break;
     }
   }
 });
 
-server.listen(5555, () => {
-  console.info("server is running on  5555");
+const PORT = 5555;
+
+server.listen(PORT, () => {
+  console.info(`\n-- Server is running on ${PORT} --\n`);
 });
