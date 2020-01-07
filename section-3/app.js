@@ -1,6 +1,24 @@
 const express = require("express");
 const app = express();
 
+const data = require("../section-2/data.json");
+
+const router = express.Router();
+app.use("/api/", router);
+
+router.get("/employees", (req, res) => {
+  res.send(data);
+});
+
+router.get("/employees/:id", (req, res) => {
+  const id = +req.params.id;
+  // Nothing shows up with === because of string compared to integer, so == or add + in front of req.params.id
+  // const employee = data.filter(d => d.id == id);
+
+  const employee = data.filter(d => d.id === id);
+  return res.send(employee);
+});
+
 // app.get("/api/employees", (req, res) => {
 //   res.send("Hello from Express");
 // });
